@@ -1,10 +1,11 @@
-#ifndef INVERTED_ANALOG_READ_H
-#define INVERTED_ANALOG_READ_H
+#ifndef SCIENCY_DIPDUINO_H
+#define SCIENCY_DIPDUINO_H
 
 #include <Arduino.h>
 
 // Function to invert analog pins
-int invertAnalogPin(int pin) {
+int getAnalogPin(int pin) {
+	
     switch (pin) {
         case A0: return A5;
         case A1: return A4;
@@ -16,13 +17,4 @@ int invertAnalogPin(int pin) {
     }
 }
 
-// Override the default analogRead function
-int analogRead(int pin) {
-    // Map the pin internally using invertAnalogPin function
-    int invertedPin = invertAnalogPin(pin);
-    
-    // Call the original analogRead function with the inverted pin
-    return analogRead(invertedPin);
-}
-
-#endif // INVERTED_ANALOG_READ_H
+#endif // SCIENCY_DIPDUINO_H
